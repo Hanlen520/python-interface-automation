@@ -39,8 +39,8 @@ class TestInterfaceCase(ParametrizedTestCase):
             self.test_data.result = 'Error'
             try:
                 # 更新结果表中的用例运行结果
-                self.db1_cursor.execute('UPDATE test_result SET result = %s WHERE case_id = %s', (self.test_data.result, self.test_data.case_id))
-                self.db1_cursor.execute('commit')
+                self.db_cursor.execute('UPDATE test_result SET result = %s WHERE case_id = %s', (self.test_data.result, self.test_data.case_id))
+                self.db_cursor.execute('commit')
             except Exception as e:
                 print e
                 self.db1_cursor.execute('rollback')
@@ -56,14 +56,13 @@ class TestInterfaceCase(ParametrizedTestCase):
 
         # 更新结果表中的用例运行结果
         try:
-            self.db1_cursor.execute('UPDATE test_result SET result = %s WHERE case_id = %s', (self.test_data.result, self.test_data.case_id))
-            self.db1_cursor.execute('commit')
+            self.db_cursor.execute('UPDATE test_result SET result = %s WHERE case_id = %s', (self.test_data.result, self.test_data.case_id))
+            self.db_cursor.execute('commit')
                 
-            self.db1_cursor.execute('UPDATE test_result SET reason = %s WHERE case_id = %s', (self.test_data.reason, self.test_data.case_id))
-            self.db1_cursor.execute('commit')
-        except Exception as e:
-            print e
-            self.db1_cursor.execute('rollback')
+            self.db_cursor.execute('UPDATE test_result SET reason = %s WHERE case_id = %s', (self.test_data.reason, self.test_data.case_id))
+            self.db_cursor.execute('commit')
+        except:
+            self.db_cursor.execute('rollback')
  
     def tearDown(self):
         pass
