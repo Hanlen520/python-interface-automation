@@ -13,7 +13,7 @@ class ParametrizedTestCase(unittest.TestCase):
     """ TestCase classes that want to be parametrized should
         inherit from this class.
     """
-    def __init__(self, methodName='runTest', test_data=None, http=None, db_cursor=None):
+    def __init__(self, methodName='runTest', test_data, http, db_cursor):
         super(ParametrizedTestCase, self).__init__(methodName)
         self.test_data = test_data
         self.http = http
