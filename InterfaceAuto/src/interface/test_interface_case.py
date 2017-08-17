@@ -41,9 +41,8 @@ class TestInterfaceCase(ParametrizedTestCase):
                 # 更新结果表中的用例运行结果
                 self.db_cursor.execute('UPDATE test_result SET result = %s WHERE case_id = %s', (self.test_data.result, self.test_data.case_id))
                 self.db_cursor.execute('commit')
-            except Exception as e:
-                print e
-                self.db1_cursor.execute('rollback')
+            except:
+                self.db_cursor.execute('rollback')
             return
 
         try:
