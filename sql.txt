@@ -1,35 +1,35 @@
 CREATE DATABASE IF NOT EXISTS testdb DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE test_data(
-case_id INT NOT NULL COMMENT 'ÓÃÀýID',
-http_method VARCHAR(5) NOT NULL COMMENT 'ÇëÇó·½·¨',
-request_name VARCHAR(30) COMMENT '½Ó¿ÚÃû',
-request_url VARCHAR(300) NOT NULL COMMENT '½Ó¿ÚURL',
-request_param VARCHAR(3000) NOT NULL COMMENT 'ÇëÇó²ÎÊý',
-test_method VARCHAR(50) NOT NULL COMMENT '²âÊÔ·½·¨',
-test_desc VARCHAR(3000) NOT NULL COMMENT '²âÊÔÃèÊö',
-PRIMARY KEY (`case_id `)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='²âÊÔÓÃÀý±í';
+case_id INT NOT NULL COMMENT 'ç”¨ä¾‹ID',
+http_method VARCHAR(5) NOT NULL COMMENT 'è¯·æ±‚æ–¹æ³•',
+request_name VARCHAR(30) COMMENT 'æŽ¥å£å',
+request_url VARCHAR(300) NOT NULL COMMENT 'æŽ¥å£URL',
+request_param VARCHAR(3000) NOT NULL COMMENT 'è¯·æ±‚å‚æ•°',
+test_method VARCHAR(50) NOT NULL COMMENT 'æµ‹è¯•æ–¹æ³•',
+test_desc VARCHAR(3000) NOT NULL COMMENT 'æµ‹è¯•æè¿°',
+PRIMARY KEY (case_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='æµ‹è¯•ç”¨ä¾‹è¡¨';
 
 CREATE TABLE pre_condition_data(
-case_id INT NOT NULL COMMENT 'ÓÃÀýID',
+case_id INT NOT NULL COMMENT 'ç”¨ä¾‹ID',
 step INT NOT NULL,
-request_url VARCHAR(300) NOT NULL COMMENT '½Ó¿ÚURL',
-request_param VARCHAR(3000) NOT NULL COMMENT 'ÇëÇó²ÎÊý',
+request_url VARCHAR(300) NOT NULL COMMENT 'æŽ¥å£URL',
+request_param VARCHAR(3000) NOT NULL COMMENT 'è¯·æ±‚å‚æ•°',
 other VARCHAR(1000),
-test_desc VARCHAR(3000) NOT NULL COMMENT '²âÊÔÃèÊö',
-PRIMARY KEY (`case_id `,step)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Ç°ÖÃÌõ¼þ±í';
+test_desc VARCHAR(3000) NOT NULL COMMENT 'æµ‹è¯•æè¿°',
+PRIMARY KEY (case_id,step)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='å‰ç½®æ¡ä»¶è¡¨';
 
 CREATE TABLE test_result(
-case_id INT NOT NULL COMMENT 'ÓÃÀýID',
-http_method VARCHAR(5) NOT NULL COMMENT 'ÇëÇó·½·¨',
-request_name VARCHAR(30) COMMENT '½Ó¿ÚÃû',
-request_url VARCHAR(300) NOT NULL COMMENT '½Ó¿ÚURL',
-request_param VARCHAR(3000) NOT NULL COMMENT 'ÇëÇó²ÎÊý',
-test_method VARCHAR(50) NOT NULL COMMENT '²âÊÔ·½·¨',
-test_desc VARCHAR(3000) NOT NULL COMMENT '²âÊÔÃèÊö',
-result VARCHAR(20) NOT NULL COMMENT '²âÊÔ½á¹û',
-reason VARCHAR(50) COMMENT '²âÊÔÊ§°ÜÔ­Òò'
-PRIMARY KEY (`case_id `)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='²âÊÔÓÃÀý±í';
+case_id INT NOT NULL COMMENT 'ç”¨ä¾‹ID',
+http_method VARCHAR(5) NOT NULL COMMENT 'è¯·æ±‚æ–¹æ³•',
+request_name VARCHAR(30) COMMENT 'æŽ¥å£å',
+request_url VARCHAR(300) NOT NULL COMMENT 'æŽ¥å£URL',
+request_param VARCHAR(3000) NOT NULL COMMENT 'è¯·æ±‚å‚æ•°',
+test_method VARCHAR(50) NOT NULL COMMENT 'æµ‹è¯•æ–¹æ³•',
+test_desc VARCHAR(3000) NOT NULL COMMENT 'æµ‹è¯•æè¿°',
+result VARCHAR(20) NOT NULL COMMENT 'æµ‹è¯•ç»“æžœ',
+reason VARCHAR(50) COMMENT 'æµ‹è¯•å¤±è´¥åŽŸå› '
+PRIMARY KEY (case_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='æµ‹è¯•ç”¨ä¾‹è¡¨';
