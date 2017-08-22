@@ -12,7 +12,7 @@ import sys
 
 class ConfigDB(object):
     '''配置数据库ip，端口等信息，获取数据库连接'''
-    def __init__(self, ini_file):
+    def __init__(self, ini_file, db):
         config = ConfigParser()
         
         #从配置文件中读取数据库服务器ip,域名，端口
