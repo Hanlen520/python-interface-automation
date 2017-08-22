@@ -9,11 +9,12 @@ Created on 2016-11-2
 from ConfigParser import ConfigParser
 
 class ConfigRunMode(object):
-    def __init__(self, run_case_config_file):
-        config = ConfigParser()
+    def __init__(self, ini_file):
+        self.ini_file = ini_file
         
+        config = ConfigParser()
         #从配置文件中读取运行模式
-        config.read(run_case_config_file)
+        config.read(self.ini_file)
         
         self.run_mode = int(config.get('RUNCASECONFIG','runmode'))
         self.case_list = eval(config.get('RUNCASECONFIG','case_id'))
