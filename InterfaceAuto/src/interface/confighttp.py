@@ -18,10 +18,11 @@ class ConfigHttp(object):
     '''配置要测试借口服务器的IP、PORT、HOST等信息，封装http请求方法'''
     
     def __init__(self, ini_file):
-        config = ConfigParser()
+        self.ini_file = ini_file
         
+        config = ConfigParser()
         #从配置文件中读取借口服务器的IP、端口、域名
-        config.read(ini_file)
+        config.read(self.ini_file)
         
         self.host = config.get('HTTP', 'host')
         self.port = config.get('HTTP', 'port')
