@@ -8,7 +8,7 @@ request_url VARCHAR(300) NOT NULL COMMENT '接口URL',
 request_param VARCHAR(3000) NOT NULL COMMENT '请求参数',
 test_method VARCHAR(50) NOT NULL COMMENT '测试方法',
 test_desc VARCHAR(3000) NOT NULL COMMENT '测试描述',
-PRIMARY KEY (case_id)
+UNIQUE (case_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='测试用例表';
 
 CREATE TABLE pre_condition_data(
@@ -18,7 +18,7 @@ request_url VARCHAR(300) NOT NULL COMMENT '接口URL',
 request_param VARCHAR(3000) NOT NULL COMMENT '请求参数',
 other VARCHAR(1000),
 test_desc VARCHAR(3000) NOT NULL COMMENT '测试描述',
-PRIMARY KEY (case_id,step)
+UNIQUE (case_id,step)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='前置条件表';
 
 CREATE TABLE test_result(
@@ -31,5 +31,5 @@ test_method VARCHAR(50) NOT NULL COMMENT '测试方法',
 test_desc VARCHAR(3000) NOT NULL COMMENT '测试描述',
 result VARCHAR(20) NOT NULL COMMENT '测试结果',
 reason VARCHAR(50) COMMENT '测试失败原因'
-PRIMARY KEY (case_id)
+UNIQUE (case_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='测试用例表';
