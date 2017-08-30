@@ -19,17 +19,17 @@ class prpcrypt():
         text = self.pad(text)  
         cryptor = AES.new(self.key,self.mode,self.iv)
         ciphertext = cryptor.encrypt(text)
-        #把加密后的字符串转化为base64字符串  
+        
         return base64.b64encode(ciphertext)  
        
-    #解密后，去掉补足的空格rstrip()
     def decrypt(self,text):  
         cryptor = AES.new(self.key,self.mode, self.iv)  
-        plain_text  = cryptor.decrypt(base64.b64decode(text))  
+        plain_text  = cryptor.decrypt(base64.b64decode(text)
+                                      
         return self.unpad(plain_text.rstrip('\0'))  
        
 if __name__ == '__main__':  
-    pc = prpcrypt('d3YmI1BUOSE2S2YmalBVZUQ=','0000000000000000') #初始化密钥和iv
+    pc = prpcrypt('d3YmI1BUOSE2S2YmalBVZUQ=','0000000000000000')
 
     pre_dict = {
         "header":{
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     dict_to_json = json.dumps(pre_dict, sort_keys=True)
     
     e = pc.encrypt(dict_to_json) #加密
-    
-    d = pc.decrypt(e) #解密  
+    d = pc.decrypt(e) #解密
+                                      
     print u"加密:",e  
     print u"解密:",d
