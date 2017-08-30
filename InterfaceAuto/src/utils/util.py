@@ -38,7 +38,7 @@ if __name__ == '__main__':
             "platformVersion":"5.0.2",
             "action":"1011",
             "cmdName":"app_wdj",
-            "userType":1,
+            "userType":"1",
             "userID":"",
             "uuid":"ffffffff-cb8f-179a-5297-397b0033c587",
             "platformCode":"Android",
