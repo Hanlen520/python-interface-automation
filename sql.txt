@@ -30,6 +30,6 @@ request_param VARCHAR(3000) NOT NULL COMMENT '请求参数',
 test_method VARCHAR(50) NOT NULL COMMENT '测试方法',
 test_desc VARCHAR(3000) NOT NULL COMMENT '测试描述',
 result VARCHAR(20) NOT NULL COMMENT '测试结果',
-reason VARCHAR(50) COMMENT '测试失败原因'
+reason VARCHAR(50) COMMENT '测试失败原因',
 UNIQUE (case_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='测试用例表';
