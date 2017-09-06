@@ -14,14 +14,14 @@ from configdb import ConfigDB
 class GlobalConfig(object):
     def __init__(self):
         #读取并配置接口服务器ip，端口等信息
-        self.http = ConfigHttp('D:/eclipse-workspace/InterfaceAuto/src/interface/http_config.ini')
+        self.http = ConfigHttp('./InterfaceAuto/src/config/http_config.ini')
 #        print self.http
         
         #读取并配置数据库服务器ip，端口等信息
-        self.db = ConfigDB('D:/eclipse-workspace/InterfaceAuto/src/interface/db_config.ini', 'DATABASE1')
+        self.db = ConfigDB('./InterfaceAuto/src/config/db_config.ini', 'DATABASE1')
         
         #读取运行模式
-        self.run_mode = ConfigRunMode('D:/eclipse-workspace/InterfaceAuto/src/interface/case_config.ini')
+        self.run_mode = ConfigRunMode('/InterfaceAuto/src/config/case_config.ini')
         
     def get_http(self):
         return self.http
