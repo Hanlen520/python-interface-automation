@@ -1,4 +1,5 @@
-#coding:utf-8
+#!/usr/bin/env python  
+# -*- coding:utf-8 -*-
 
 '''
 Created on 2016-11-2
@@ -24,12 +25,12 @@ class ConfigDB(object):
         self.port = config.get(self.db,'port')
         self.user = config.get(self.db,'user')
         self.passwd = config.get(self.db,'password')
-        self.db = config.get(self.db,'db')
+        self.table = config.get(self.db,'db')
         self.charset = config.get(self.db,'charset')
 
     def get_conn(self):
         try:
-            conn = connector.connect(host=self.host, port=self.port, user=self.user, password=self.passwd, database=self.db, charset=self.charset)
+            conn = connector.connect(host=self.host, port=self.port, user=self.user, password=self.passwd, database=self.table, charset=self.charset)
             return conn
         except Exception as e:
             print e
