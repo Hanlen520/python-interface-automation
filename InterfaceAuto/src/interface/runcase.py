@@ -1,4 +1,5 @@
-#coding:utf-8
+#!/usr/bin/env python  
+# -*- coding:utf-8 -*-
 
 '''
 Created on 2016-11-2
@@ -31,7 +32,7 @@ class RunCase(object):
 
             # 循环执行测试用例
             for case_id in range(1, test_case_num+1):
-                db_cursor.execute('SELECT  http_method, request_name, request_url, request_param, test_method, test_desc, action FROM test_data WHERE case_id = %s',(case_id,))
+                db_cursor.execute('SELECT  http_method, request_name, request_url, request_param, test_method, test_desc FROM test_data WHERE case_id = %s',(case_id,))
                 # 记录数据
                 tmp_result = db_cursor.fetchone()
                 
@@ -41,8 +42,7 @@ class RunCase(object):
                 test_data.request_url = tmp_result[2].encode("utf-8")
                 test_data.request_param = tmp_result[3].encode("utf-8")
                 test_data.test_method = tmp_result[4].encode("utf-8")
-                test_data.test_desc = tmp_result[5].encode("utf-8")
-                test_data.action = tmp_result[6].encode("utf-8")    
+                test_data.test_desc = tmp_result[5].encode("utf-8")   
                 test_data.result = ''
                 test_data.reason = ''
                 
@@ -50,9 +50,9 @@ class RunCase(object):
 #                pdb.set_trace()
                     
                 try:
-                    sql = 'INSERT INTO test_result (case_id, http_method, request_name, request_url,request_param, test_method, test_desc, action, result, reason) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+                    sql = 'INSERT INTO test_result (case_id, http_method, request_name, request_url,request_param, test_method, test_desc, result, reason) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)'
                     data = (test_data.case_id, test_data.http_method, test_data.request_name, test_data.request_url, 
-                            test_data.request_param, test_data.test_method, test_data.test_desc, test_data.action, test_data.result, test_data.reason)
+                            test_data.request_param, test_data.test_method, test_data.test_desc, test_data.result, test_data.reason)
                     
                     db_cursor.execute(sql,data)
                     db_conn.commit()
