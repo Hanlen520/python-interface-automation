@@ -1,4 +1,5 @@
-#coding:utf-8
+#!/usr/bin/env python  
+# -*- coding:utf-8 -*-
 
 '''
 Created on 2016-11-2
@@ -75,7 +76,7 @@ class ConfigHttp(object):
     
     #封装POST方法    
     def post(self, url, params):
-        params = urllib.urlencode(params)
+#         params = urllib.urlencode(params)
         
 #         print params
 
