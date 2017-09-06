@@ -1,3 +1,4 @@
+#!/usr/bin/env python  
 #coding:utf-8
 
 '''
@@ -26,7 +27,7 @@ class HtmlReport(object):
             page = PyH(self.title)
             page << h1(head, align='center')     # 标题居中
 
-            page << p('测试总耗时：' + self.time_took)
+            page << p('测试总耗时：'.encode('gb18030') + self.time_took)
 
             # 查询测试用例总数
             query = ('SELECT count(case_id) FROM test_result')
@@ -45,21 +46,21 @@ class HtmlReport(object):
             self.cursor.execute('SELECT count(case_id) FROM test_result WHERE result = %s',('Error',))
             self.error_num = self.cursor.fetchone()[0]
 
-            page << p('测试用例数：' + str(self.case_total) + '&nbsp'*10 + '成功用例数：' + str(self.success_num) +
-                      '&nbsp'*10 + '失败用例数：' + str(self.fail_num) + '&nbsp'*10 +  '出错用例数：' + str(self.error_num))
+            page << p('测试用例数：'.encode('gb18030') + str(self.case_total) + '&nbsp'*10 + '成功用例数：'.encode('gb18030') + str(self.success_num) +
+                      '&nbsp'*10 + '失败用例数：'.encode('gb18030') + str(self.fail_num) + '&nbsp'*10 +  '出错用例数：'.encode('gb18030') + str(self.error_num))
             
             #  表格标题caption 表格边框border 单元边沿与其内容之间的空白cellpadding 单元格之间间隔为cellspacing
             tab = table( border='1', cellpadding='1', cellspacing='0', cl='table')
             tab1 = page << tab
-            tab1 << tr(td('用例ID', bgcolor='#ABABAB', align='center')
-                       + td('HTTP方法', bgcolor='#ABABAB', align='center')
-                       + td('接口名称', bgcolor='#ABABAB', align='center')
-                       + td('请求URL', bgcolor='#ABABAB', align='center')
-                       + td('请求参数/数据', bgcolor='#ABABAB', align='center')
-                       + td('测试方法', bgcolor='#ABABAB', align='center')
-                       + td('测试描述', bgcolor='#ABABAB', align='center')
-                       + td('测试结果', bgcolor='#ABABAB', align='center')
-                       + td('失败原因', bgcolor='#ABABAB', align='center'))
+            tab1 << tr(td('用例ID'.encode('gb18030'), bgcolor='#ABABAB', align='center')
+                       + td('HTTP方法'.encode('gb18030'), bgcolor='#ABABAB', align='center')
+                       + td('接口名称'.encode('gb18030'), bgcolor='#ABABAB', align='center')
+                       + td('请求URL'.encode('gb18030'), bgcolor='#ABABAB', align='center')
+                       + td('请求参数'.encode('gb18030'), bgcolor='#ABABAB', align='center')
+                       + td('测试方法'.encode('gb18030'), bgcolor='#ABABAB', align='center')
+                       + td('测试描述'.encode('gb18030'), bgcolor='#ABABAB', align='center')
+                       + td('测试结果'.encode('gb18030'), bgcolor='#ABABAB', align='center')
+                       + td('失败原因'.encode('gb18030'), bgcolor='#ABABAB', align='center'))
 
             # 查询所有测试结果并记录到html文档
             query = ('SELECT case_id, http_method, request_name, request_url,'
