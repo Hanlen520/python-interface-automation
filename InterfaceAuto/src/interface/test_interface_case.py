@@ -1,4 +1,5 @@
-#coding:utf-8
+#!/usr/bin/env python  
+# -*- coding:utf-8 -*-
 
 '''
 Created on 2016-11-2
@@ -6,14 +7,15 @@ Created on 2016-11-2
 @author: Sun Jinsen
 '''
 
-import unittest 
+import unittest
+from utils.util import Prpcrypt
 
 # 测试用例(组)类
 class ParametrizedTestCase(unittest.TestCase):
     """ TestCase classes that want to be parametrized should
         inherit from this class.
     """
-    def __init__(self, methodName='runTest', test_data, http, db_cursor):
+    def __init__(self, methodName='runTest', test_data=None, http=None, db_cursor=None):
         super(ParametrizedTestCase, self).__init__(methodName)
         self.test_data = test_data
         self.http = http
@@ -25,15 +27,15 @@ class TestInterfaceCase(ParametrizedTestCase):
         pass
 
     def test_login(self):
-        '''
         #添加HTTP请求头
         header = {
             'User-Agent':'Dalvik/2.1.0 (Linux; U; Android 6.0; Letv X500 Build/DAXCNCU5801810201S)',
-            'Content-Type':'application/x-www-form-urlencoded'
+            'Content-Type':'application/json'
             }
         self.http.set_header(header)
-        '''
-        response = self.http.post(self.test_data.request_url, self.test_data.request_param)
+        
+        response = self.http.post(self.test_data.request_url, Prpcrypt('d3YmI1BUOSE2S2YmalBVZUQ=',b'0000000000000000').encrypt(self.test_data.request_param))
+#         print response
         
         if {} == response:
             self.test_data.result = 'Error'
@@ -46,7 +48,7 @@ class TestInterfaceCase(ParametrizedTestCase):
             return
 
         try:
-            self.assertEqual(response['Code'], 0, msg=u'返回报文结果中Code不等于0' )
+            self.assertEqual(response['code'], 0, msg=u'返回报文结果中code不等于0' )
             self.test_data.result = 'Pass'
             
         except AssertionError as e:
